@@ -22,18 +22,19 @@ export const Card = (props: any) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const handleOpenModalAndGetContent = () => {
-        props.onClick()
+        props.onClick && props.onClick()
         onOpen()
     }
     return (
-        <>
-            <Box>
-                <SimpleGrid w="full" spacing={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>
+        <Box maxW={280} >
+            <Box >
+                <SimpleGrid w="full" minH={340} spacing={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>
                     <CardChakra bgColor="none" color={principal.white} _hover={{ bgColor: principal.transparentBlue }}>
                         <CardHeader>
-                            <Heading size='md'>{props.title}</Heading>
+                            {props.card}
+                            <Heading size='md' mt={7}>{props.title}</Heading>
                         </CardHeader>
-                        <CardBody>
+                        <CardBody mt={-5}>
                             <Text>{props.description}</Text>
                         </CardBody>
                         <CardFooter>
@@ -50,7 +51,7 @@ export const Card = (props: any) => {
                     </CardChakra>
                 </SimpleGrid>
             </Box>
-            <Drawer placement={"bottom"} onClose={onClose} isOpen={isOpen} >
+            <Drawer placement={"bottom"} onClose={onClose} isOpen={isOpen}>
                 <DrawerOverlay />
                 <DrawerContent background={principal.white}>
                     <DrawerBody>
@@ -58,6 +59,6 @@ export const Card = (props: any) => {
                     </DrawerBody>
                 </DrawerContent>
             </Drawer>
-        </>
+        </Box>
     )
 }

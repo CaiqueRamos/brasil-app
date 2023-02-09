@@ -1,3 +1,3 @@
 export const PATH_BRASIL = {
-    url: "https://brasilapi.com.br/api/banks/v1"
+    url: "https://brasilapi.com.br/api/"
 }
